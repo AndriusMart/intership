@@ -12,10 +12,10 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-
+        $today = date('Y-m-d');
         $request->validate(
             [
-                'endDate' => 'date_format:Y-m-d',
+                'endDate' => 'date_format:Y-m-d|before:'. $today,
                 'startDate' => 'date_format:Y-m-d|after:1959-01-01'
 
             ]
