@@ -4,13 +4,15 @@ namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Http\Request;
 
 class WeatherService
 {
 
-    public function getWeatherData($startDate, $endDate)
+    public function getWeatherData(Request $request)
     {
-        
+        $startDate = $request['query']['startDate'];
+        $endDate = $request['query']['endDate'];
         $daily = Cache::remember("daily.$startDate.$endDate", 60, function () use ($startDate, $endDate) {
             $url = "https://archive-api.open-meteo.com/v1/archive?latitude=54.687157&longitude=25.279652&start_date=$startDate&end_date=$endDate&daily=temperature_2m_max&daily=temperature_2m_min&timezone=Europe/Berlin";
             return Http::get($url)->json();
@@ -27,15 +29,15 @@ class WeatherService
                 "max" =>  $max,
                 "min" =>  $min,
             );
-            return $data;
+            return json_encode($data);
         }
         return $daily['reason'];
     }
 
     public function tempTowords($num)
     {
-        $ones = array(
-            0 => "nulis",
+        $ones = [
+            0 => "",
             1 => "vienas",
             2 => "du",
             3 => "trys",
@@ -55,7 +57,7 @@ class WeatherService
             17 => "septyniolika",
             18 => "aštuoniolika",
             19 => "devyniolika"
-        );
+        ];
         $tens = array(
             1 => "dešimt",
             2 => "dvidešimt",
@@ -74,6 +76,9 @@ class WeatherService
             $num = abs($num);
         } else { // else we just add 'plius' to result
             $text .= "plius ";
+        }
+        if($num == 0){
+            return "nulis";
         }
         //formating number so we could seperate it 
         $num = number_format($num, 1);

@@ -1,30 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Services\DaysBetweenDatesService;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class Days extends Controller
 {
-    public function calcDays(Request $request, DaysBetweenDatesService $daysBetweenDates)
+    public function calcDays(Request $request)
     {
-         $endDate = $request->endDate;
-        $startDate = $request->startDate;
         $request->validate(
             [
                 'endDate' => 'date_format:Y-m-d',
-                'startDate' =>'date_format:Y-m-d'
+                'startDate' => 'date_format:Y-m-d'
             ]
         );
 
-        if($startDate == null || $endDate == null){
-            $daysBetweenDates = 0;
-        }else{
-            $daysBetweenDates = $daysBetweenDates->calculateDaysBetweenDates($startDate, $endDate);
-        }
+        $endDate = $request->endDate;
+        $startDate = $request->startDate;
+
+        $url = url('api/calculateDays');
+        $response = Http::get($url, [
+            'query' => [
+                'startDate' => $startDate,
+                'endDate' => $endDate
+            ]
+        ]);
+        $daysBetweenDates = $response->json();
         return view('days', [
             'days' => $daysBetweenDates,
         ]);
-
     }
 }

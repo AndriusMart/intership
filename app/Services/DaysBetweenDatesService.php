@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Services;
-
+use Illuminate\Http\Request;
 
 
 class DaysBetweenDatesService
 {
-    public function calculateDaysBetweenDates($startDate, $endDate)
+    public function calculateDaysBetweenDates(Request $request)
     {
         // works only with date format YYYY-MM-DD
+        $startDate = $request['query']['startDate'];
+        $endDate = $request['query']['endDate'];
         $startDate = explode("-", $startDate); //"2022-08-01";
-        $endDate = explode("-", $endDate); // "2023-012-04";
+        $endDate = explode("-", $endDate); // "2023-12-04";
 
         //  separating years, months and days
-        // dd(count($startDate));
         if(count($startDate)!= 3 || count($endDate) != 3){
             return "Bad date format";
         }
@@ -50,6 +51,6 @@ class DaysBetweenDatesService
         // countng days between dates and adding them to total 
         $elapsedDays += ($endDay - $startDay);
 
-        return $elapsedDays;
+        return json_encode($elapsedDays);
     }
 }

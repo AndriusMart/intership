@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Services;
+use Illuminate\Http\Request;
 
 class NumbersToWordsService{
 
-    function numberTowords($number){
-        // not working with negative and big numbers
-        if ($number < 0) return 'Number is negatyve';
+    function numberTowords(Request $request){
+
+        $number = $request['query']['number'];
         if ($number == 0) return 'nulis';
 
         $ones = array('', 'vienas', 'du', 'trys', 'keturi', 'penki', 'šeši', 'septyni', 'aštuoni', 'devyni');
@@ -58,7 +59,7 @@ class NumbersToWordsService{
                 $words[] = $hundreds[$i][$plural];
             }
         }
-        return  implode(' ', $words,);
+        return  json_encode(implode(' ', $words,));
     }
 
 
