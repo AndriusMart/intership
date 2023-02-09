@@ -33,18 +33,18 @@ class WeatherTest extends TestCase
             'endDate' => '2022-12-04',
         ];
         $result = json_decode($weatherController->getWeatherData($request), true);
-        
+        // result has keys
         $this->assertArrayHasKey('averageMax', $result);
         $this->assertArrayHasKey('averageMin', $result);
         $this->assertArrayHasKey('max', $result);
         $this->assertArrayHasKey('min', $result);
-
+        // result is string
         $this->assertIsString($result['averageMax']);
         $this->assertIsString($result['averageMin']);
         $this->assertIsString($result['max']);
         $this->assertIsString($result['min']);
 
-
+        // result is as expected
         $expected = [
         "averageMax" => "plius trylika kablelis penki °C",
         "averageMin" => "plius septyni kablelis šeši °C",
@@ -61,7 +61,7 @@ class WeatherTest extends TestCase
             'endDate' => '2000-12-04',
         ];
         $result = json_decode($weatherController->getWeatherData($request), true);
-
+        // result is as expected
         $expected = [
             "averageMax" => "plius devyni kablelis septyni °C",
             "averageMin" => "plius trys kablelis keturi °C",
