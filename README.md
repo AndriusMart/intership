@@ -9,11 +9,13 @@ laravel/php using VSC
 
 * How to run the program
 * Step-by-step bullets
-
+From .env.example file remove .example so its only .env
 ```
 npm install
 ```
-
+```
+composer install
+```
 ```
 npm run dev
 ```
