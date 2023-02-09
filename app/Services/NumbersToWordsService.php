@@ -59,7 +59,7 @@ class NumbersToWordsService{
                 $words[] = $hundreds[$i][$plural];
             }
         }
-        return  json_encode(implode(' ', $words,));
+        return  implode(' ', $words,);
     }
 
 

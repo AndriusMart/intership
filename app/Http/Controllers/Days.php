@@ -27,6 +27,7 @@ class Days extends Controller
             ]
         ]);
         $daysBetweenDates = $response->json();
+        // dd($daysBetweenDates);
         return view('days', [
             'days' => $daysBetweenDates,
         ]);

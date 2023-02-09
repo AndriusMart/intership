@@ -78,7 +78,7 @@ class WeatherService
             $text .= "plius ";
         }
         if($num == 0){
-            return "nulis";
+            return "nulis °C";
         }
         //formating number so we could seperate it 
         $num = number_format($num, 1);

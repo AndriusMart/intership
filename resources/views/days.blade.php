@@ -21,7 +21,7 @@
                         </form>
                     </div>
                     <div class="d-flex justify-content-center">
-                        @if($days== null)
+                        @if($days=== null)
                         <h4> Type in dates</h4>
                         @else
                         <h3>{{ $days}}</h3>
