@@ -12,7 +12,7 @@
                     </div>
                     <div class="card-body">
                         <form action="{{ route('calcDays') }}" method="get" enctype="multipart/form-data">
-                            <label>Satrt date:</label>
+                            <label>Start date:</label>
                             <input type="text" class="form-control" name="startDate" value="YYYY-MM-DD">
                             <label>End date:</label>
                             <input type="text" class="form-control" name="endDate" value="YYYY-MM-DD">
