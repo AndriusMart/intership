@@ -4,8 +4,6 @@ namespace Tests\Unit;
 
 use App\Services\WeatherService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class WeatherTest extends TestCase
