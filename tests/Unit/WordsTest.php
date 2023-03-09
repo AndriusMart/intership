@@ -18,7 +18,7 @@ class WordsTest extends TestCase
         ];
 
         $expected = 'dvidešimt trys tūkstančiai keturi šimtai penkiasdešimt šeši';
-        $result = $service->numberToWords($request);
+        $result = json_decode($service->numberToWords($request));
         $this->assertEquals($expected, $result);
 
 
@@ -28,7 +28,7 @@ class WordsTest extends TestCase
         ];
 
         $expected = 'penkiasdešimt šeši';
-        $result = $service->numberToWords($request);
+        $result = json_decode($service->numberToWords($request));
         $this->assertEquals($expected, $result);
 
 
@@ -39,7 +39,7 @@ class WordsTest extends TestCase
         ];
 
         $expected = 'du milijonai';
-        $result = $service->numberToWords($request);
+        $result = json_decode($service->numberToWords($request));
         $this->assertEquals($expected, $result);
     }
 }
