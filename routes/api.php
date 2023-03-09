@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::get('calculateDays', 'DaysBetweenDatesService@calculate');
 Route::get('/calculateDays', [DaysBetweenDatesService::class, 'calculateDaysBetweenDates']);
-Route::get('/numToWords', [NumbersToWordsService::class, 'numberTowords']);
+Route::get('/numToWords', [NumbersToWordsService::class, 'numberToWords']);
 Route::get('/weather', [WeatherService::class, 'getWeatherData']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

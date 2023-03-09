@@ -5,8 +5,8 @@ use Illuminate\Http\Request;
 
 class NumbersToWordsService{
 
-    function numberTowords(Request $request){
-
+    function numberToWords(Request $request){
+        
         $number = $request['query']['number'];
         if ($number == 0) return 'nulis';
 
@@ -59,7 +59,8 @@ class NumbersToWordsService{
                 $words[] = $hundreds[$i][$plural];
             }
         }
-        return  implode(' ', $words,);
+        $text =implode(' ', $words,);
+        return  json_encode($text);
     }
 
 

@@ -16,7 +16,7 @@ class Words extends Controller
             $url = url('api/numToWords');
             $response = Http::get($url, [
                 'query' => [
-                    'number' => $number ,
+                    'number' => $number
                 ]
             ]); 
             $numbersToWords = $response->json();
