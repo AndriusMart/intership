@@ -29,7 +29,7 @@ class NumbersToWordsService{
             $plural  = 0;
             // add hundred if triplets first number > 0
             if ($triplet[0] > 0) {
-                $words[] = $ones[$triplet[0]];
+                $words[] = ($triplet[0] == 1)? '': $ones[$triplet[0]];
                 $words[] = ($triplet[0] > 1) ? 'šimtai' : 'šimtas';
             }
             // checking last two numbers of triplets
