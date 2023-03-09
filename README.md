@@ -2,18 +2,20 @@ laravel/php using VSC
 
 ### Installing
 
-* Download this project/clone
-* Make sure .env is not renamed
+* Download this project
 
 ### Executing program
 
 * How to run the program
 * Step-by-step bullets
 
+*!!! Rename .env.example file to .env
 ```
 npm install
 ```
-
+```
+composer install
+```
 ```
 npm run dev
 ```
